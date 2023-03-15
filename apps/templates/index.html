@@ -1,0 +1,40 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie-edge"/>
+        <title>Quiz - DevPro</title>
+        <link rel="stylesheet" href="{% static 'base/assets/styles/app.css' %}"/>
+    </head>
+    <body>
+        <div class="login-page">
+
+            <p class="subtitle-quiz">Quiz</p>e
+            <p class="subtitle-page">Dev Pro</p>
+            <div class="form">
+                <form class="login-form" method="post" action="." >
+                    {% csrf_token %}
+                  <input name="nome" type="text" placeholder="{{form.nome.label}}" value="{{form.nome.data|default_if_none:''}}" />
+                  {% for error in form.nome.errors %}
+                        <p style="color: red">{{error}}</p>
+                  {% endfor %}
+                  
+                  {{form.idade}}
+                  {{form.email}}
+
+                  <br>
+                  Sexo:
+                  {{form.sexo}}
+                  
+                 Hobbies: <br>
+                 {{form.hobbie}}
+                 
+                  <button>Entrar</button>
+                </form>
+            </div>
+        </div>
+    </body>
+</html> 
